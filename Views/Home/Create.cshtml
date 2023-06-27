@@ -1,0 +1,29 @@
+﻿@model ASPLab05.Models.Employee
+@{
+    ViewData["Title"] = "Create Page";
+}
+
+<div>
+    <div class="container mt-5 border p-4 rounded-3">
+        <form method="POST" asp-controller="Home" asp-action="CreateAction">
+            <div class="mb-3">
+                <label for="1" class="form-label"> Name </label>
+                <input asp-for="name" type="text" class="form-control" id="1">
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="mb-3 col-6">
+                    <label for="2" class="form-label"> City </label>
+                    <input asp-for="city" type="text" class="form-control" id="2">
+                </div>
+
+                <div class="mb-3 col-5">
+                    <label for="3" class="form-label"> Salary </label>
+                    <input asp-for="salary" type="number" class="form-control" id="3">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+</div>

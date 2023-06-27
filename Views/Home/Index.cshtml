@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ASPLab05.Models.Employee>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="col-4 d-flex my-3">
+        <form class="d-flex" role="search" method="GET" asp-action="Search" asp-controller="Home">
+            <input type="text" name="text" placeholder="Search" />
+            <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="d-flex">
+        <a asp-controller="Home" asp-action="Index" type="button" class="btn btn-info mx-1 text-white"> HOME </a>
+        <a asp-controller="Home" asp-action="Create" type="button" class="btn btn-primary"> ADD EMPLOYEE </a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">City</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">  @Html.DisplayFor(modelItem => item.Id) </th>
+                    <td>  @Html.DisplayFor(modelItem => item.name) </td>
+                    <td>  @Html.DisplayFor(modelItem => item.city) </td>
+                    <td>  @Html.DisplayFor(modelItem => item.salary) </td>
+                    <td>
+                        @Html.ActionLink("Delete","Delete","Home",new { custID = item.Id },new { @class = "link-danger" })
+                        @Html.ActionLink("edit","Edit","Home",new { custID = item.Id},new { @class = "link-info" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
